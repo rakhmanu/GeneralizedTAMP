@@ -1,7 +1,7 @@
 import random
 from GeneralizedTAMP.language.pddl_structures import Domain, Problem
 from GeneralizedTAMP.language.parse_pddl import parse_sequential_domain, parse_problem
-from GeneralizedTAMP.language.planner import find_plan, apply_action
+from GeneralizedTAMP.language.planner import find_plan, apply_action, task_from_domain_problem, get_action_instances
 from GeneralizedTAMP.utils import *
 from collections import defaultdict
 import sys
@@ -81,7 +81,7 @@ class GeneralizedPlanGraph:
 		self.domain = parse_sequential_domain(read(self.domain_file))
 		self.problem = parse_problem(self.domain, read(self.problem_file))
 
-	def generalize_choice_actions(self, plan):
+	def generalize_choice_actions(self, plan, states):
 		"""
 			Get the role of each of the objects in the argument of the action
 		"""
@@ -98,6 +98,10 @@ class GeneralizedPlanGraph:
 		raise NotImplementedError
 
 	def trace(self, plan):
+		# First need to generate instantiated actions
+		task = task_from_domain_problem(self.domain, self.problem)
+		action_instances = get_action_instances(task, plan)
+		sys.exit(1)
 
 		concrete_states = [ self.problem ]
 		for action_idx, action in enumerate(plan):
