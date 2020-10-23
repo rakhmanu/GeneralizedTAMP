@@ -17,6 +17,7 @@ Geometric information is incorporated into the generalized task planning framewo
 ## Roadmap
 
 Project #1
+
 *Version 0.1* -- Implement standard generalized task planning inspired by ARANDA
 
 *Version 0.2* -- Modify the standard generalized task planner to work for fully observable nondeterministic generalized planning problem FOND problems.
