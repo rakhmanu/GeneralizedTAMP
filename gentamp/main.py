@@ -88,7 +88,7 @@ class GeneralizedPlanGraph:
 
 		# Get the arguments of the action from the domain
 		print(plan)
-		print(self.domain)
+		print(self.domain.actions[0])
 		raise NotImplementedError
 
 	def apply_actions_abstract(self, state, action):
@@ -98,19 +98,22 @@ class GeneralizedPlanGraph:
 		raise NotImplementedError
 
 	def trace(self, plan):
-		print(plan)
-		concrete_states = [ self.problem ]
 
+		concrete_states = [ self.problem ]
+		for action_idx, action in enumerate(plan):
+			concrete_states.append(apply_action(concrete_states[-1], action))
+
+		print(concrete_states)
+		sys.exit(1)
 		# Create the abstract structure
 		abstract_states = [ AbstractStructure(self.problem) ]
 
 		# Generalize the choice actions
-		choice_actions = self.generalize_choice_actions(plan)
+		abstract_actions = self.generalize_choice_actions(plan, states)
 
-		for i, a_i in enumerate(choice_actions):
+		for aa_idx, aa in enumerate(abstract_actions):
 			# Apply the action to the concrete state
-			concrete_states.append(apply_action(concrete_states[-1], a_i))
-			abs_struct_set = self.apply_action_abstract(a_i)
+			abs_struct_set = self.apply_action_abstract(aa)
 			for S in abs_struct_set:
 				if (self.subsumed(concrete_states[-1], S)):
 					abstract_states.append(S)
