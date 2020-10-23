@@ -1,7 +1,8 @@
 import sys
 import os
 from collections import namedtuple
-
+from GeneralizedTAMP.language.pddl_structures import Domain, Problem
+from GeneralizedTAMP.utils import *
 # Fast downward translation requires command line arguments
 
 def find_build(fd_path):
@@ -28,16 +29,6 @@ import pddl_parser.lisp_parser
 import pddl_parser
 
 sys.argv = original_argv
-
-Domain = namedtuple('Domain', ['name', 'requirements', 'types', 'type_dict', 'constants',
-                               'predicates', 'predicate_dict', 'functions', 'actions', 'axioms'])
-
-Problem = namedtuple('Problem', ['task_name', 'task_domain_name', 'task_requirements',
-                                 'objects', 'init', 'goal', 'use_metric'])
-
-def read(filename):
-    with open(filename, 'r') as f:
-        return f.read()
 
 def parse_lisp(lisp):
     return pddl_parser.lisp_parser.parse_nested_list(lisp.splitlines())
