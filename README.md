@@ -17,11 +17,16 @@ Geometric information is incorporated into the generalized task planning framewo
 ## Roadmap
 
 Project #1
-Version 0.1 -- Implement standard generalized task planning inspired by ARANDA
-Version 0.2 -- Modify the standard generalized task planner to work for fully observable nondeterministic generalized planning problem FOND problems.
-Version 1.0 -- Build (or use) a TAMP solver which can unroll generalized plans into plan skeletons for given problem instances and can soft fallback on skeleton-less planning under failure. Use TAMP plans to update FOND generalized task plan.
-Version 2.0 -- Nested looping/more algorithmic abstractions
-Version 3.0 -- Incorporate statistical properties of the geometric state to put weights on actions with higher probability given the geometry
+*Version 0.1* -- Implement standard generalized task planning inspired by ARANDA
+
+*Version 0.2* -- Modify the standard generalized task planner to work for fully observable nondeterministic generalized planning problem FOND problems.
+
+*Version 1.0* -- Build (or use) a TAMP solver which can unroll generalized plans into plan skeletons for given problem instances and can soft fallback on skeleton-less planning under failure. Use TAMP plans to update FOND generalized task plan.
+
+*Version 2.0* -- Nested looping/more algorithmic abstractions
+
+*Version 3.0* -- Incorporate statistical properties of the geometric state to put weights on actions with higher probability given the geometry
+
 
 ## Tasks
 ### Task Planning
